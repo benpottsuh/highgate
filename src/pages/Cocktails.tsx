@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useSearchParams } from "react-router-dom";
-import { filterCocktails, sections } from "../data";
+import { useCocktails } from "../hooks/useCocktails";
+import { useSections } from "../hooks/useSections";
 import CocktailCard from "../components/CocktailCard";
 import { SearchIcon } from "../components/icons/UIIcons";
 import type { SectionId, BaseSpirit } from "../types";
@@ -11,11 +12,18 @@ export default function Cocktails() {
   const [searchParams] = useSearchParams();
   const initialSpirit = searchParams.get("spirit");
 
+  const { sections, loading: secLoading } = useSections();
+  const { filterCocktails, loading: cocLoading } = useCocktails();
+
   const [search, setSearch] = useState("");
   const [sectionFilter, setSectionFilter] = useState<SectionId | null>(null);
   const [spiritFilter, setSpiritFilter] = useState<BaseSpirit | null>(
     initialSpirit as BaseSpirit | null
   );
+
+  if (secLoading || cocLoading) {
+    return <div className="empty-state">Loading…</div>;
+  }
 
   const filtered = filterCocktails({
     search,

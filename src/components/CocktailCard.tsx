@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { SECTIONS } from "../data";
+import { useSections } from "../hooks/useSections";
 import GlassIcon from "./icons/GlassIcon";
 import SpiritIcon from "./icons/SpiritIcon";
 import { ChevronRight } from "./icons/UIIcons";
@@ -11,7 +11,8 @@ interface Props {
 }
 
 export default function CocktailCard({ cocktail, animationDelay = 0 }: Props) {
-  const sec = SECTIONS[cocktail.section];
+  const { getSectionById } = useSections();
+  const sec = getSectionById(cocktail.section);
   const delayClass = animationDelay > 0 ? `fade-in-${Math.min(animationDelay, 5)}` : "";
 
   return (

@@ -1,10 +1,18 @@
 import { useParams, Link } from "react-router-dom";
-import { getSectionById, getCocktailsBySection } from "../data";
+import { useSections } from "../hooks/useSections";
+import { useCocktails } from "../hooks/useCocktails";
 import CocktailCard from "../components/CocktailCard";
 import type { SectionId } from "../types";
 
 export default function SectionOverview() {
   const { id } = useParams<{ id: string }>();
+  const { getSectionById, loading: secLoading } = useSections();
+  const { getCocktailsBySection, loading: cocLoading } = useCocktails();
+
+  if (secLoading || cocLoading) {
+    return <div className="empty-state">Loading…</div>;
+  }
+
   const section = getSectionById(id ?? "");
 
   if (!section) {

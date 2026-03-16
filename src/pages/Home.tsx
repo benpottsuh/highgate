@@ -1,10 +1,20 @@
 import { Link } from "react-router-dom";
-import { sections, cocktails, techniques } from "../data";
+import { useSections } from "../hooks/useSections";
+import { useCocktails } from "../hooks/useCocktails";
+import { useTechniques } from "../hooks/useTechniques";
 import type { SectionId } from "../types";
 
 const SPIRIT_CHIPS = ["Whiskey", "Vodka", "Gin", "Tequila", "Rum", "NA"];
 
 export default function Home() {
+  const { sections, loading: secLoading } = useSections();
+  const { cocktails, loading: cocLoading } = useCocktails();
+  const { techniques, loading: techLoading } = useTechniques();
+
+  if (secLoading || cocLoading || techLoading) {
+    return <div className="empty-state">Loading…</div>;
+  }
+
   return (
     <div>
       {/* Hero */}

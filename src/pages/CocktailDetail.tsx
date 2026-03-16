@@ -1,18 +1,26 @@
 import { useParams, Link } from "react-router-dom";
-import { getCocktailBySlug, SECTIONS } from "../data";
+import { useCocktails } from "../hooks/useCocktails";
+import { useSections } from "../hooks/useSections";
 import GlassIcon from "../components/icons/GlassIcon";
 import { TechIcon } from "../components/icons/NavIcons";
 import { PlayIcon } from "../components/icons/UIIcons";
 
 export default function CocktailDetail() {
   const { slug } = useParams<{ slug: string }>();
+  const { getCocktailBySlug, loading: cocLoading } = useCocktails();
+  const { getSectionById, loading: secLoading } = useSections();
+
+  if (cocLoading || secLoading) {
+    return <div className="empty-state">Loading…</div>;
+  }
+
   const cocktail = getCocktailBySlug(slug ?? "");
 
   if (!cocktail) {
     return <div className="empty-state">Cocktail not found.</div>;
   }
 
-  const sec = SECTIONS[cocktail.section];
+  const sec = getSectionById(cocktail.section);
 
   return (
     <div>

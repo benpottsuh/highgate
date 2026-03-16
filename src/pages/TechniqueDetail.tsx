@@ -1,9 +1,15 @@
 import { useParams, Link } from "react-router-dom";
-import { getTechniqueById } from "../data";
+import { useTechniques } from "../hooks/useTechniques";
 import { PlayIcon } from "../components/icons/UIIcons";
 
 export default function TechniqueDetail() {
   const { id } = useParams<{ id: string }>();
+  const { getTechniqueById, loading } = useTechniques();
+
+  if (loading) {
+    return <div className="empty-state">Loading…</div>;
+  }
+
   const technique = getTechniqueById(id ?? "");
 
   if (!technique) {

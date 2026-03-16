@@ -1,8 +1,14 @@
 import { Link } from "react-router-dom";
-import { techniques } from "../data";
+import { useTechniques } from "../hooks/useTechniques";
 import { ChevronRight } from "../components/icons/UIIcons";
 
 export default function Techniques() {
+  const { techniques, loading } = useTechniques();
+
+  if (loading) {
+    return <div className="empty-state">Loading…</div>;
+  }
+
   return (
     <div>
       <div className="home-hero fade-in">
