@@ -14,6 +14,7 @@ export const techniques: Technique[] = [
       "Double-strain through a Hawthorne and fine mesh for citrus cocktails",
       "Always taste the drink before serving",
     ],
+    video: null,
   },
   {
     id: "stirring",
@@ -28,6 +29,7 @@ export const techniques: Technique[] = [
       "Strain with a julep strainer for mixing glass, Hawthorne for tin",
       "Serve immediately — stirred drinks warm fast",
     ],
+    video: null,
   },
   {
     id: "highballs",
@@ -42,6 +44,7 @@ export const techniques: Technique[] = [
       "One gentle bar-spoon lift to integrate — never over-stir",
       "Garnish and serve immediately",
     ],
+    video: null,
   },
   {
     id: "garnish",
@@ -56,6 +59,7 @@ export const techniques: Technique[] = [
       "Keep garnish station organized with mise containers and damp towels",
       "If it doesn't look right, redo it",
     ],
+    video: null,
   },
   {
     id: "bar-setup",
@@ -70,5 +74,6 @@ export const techniques: Technique[] = [
       "Breakdown: clean as you go, deep-clean wells, restock for next shift",
       "Communicate shortages to the manager before you run out, not after",
     ],
+    video: null,
   },
 ];

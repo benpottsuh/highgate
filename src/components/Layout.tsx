@@ -1,7 +1,7 @@
 import { Outlet, useLocation, useNavigate } from "react-router-dom";
 import BottomNav from "./BottomNav";
 import { ChevronLeft } from "./icons/UIIcons";
-import highgateLogo from "../assets/highgate-logo.svg";
+import highgateLogo from "../assets/highgate-logo-clean.png";
 
 export default function Layout() {
   const location = useLocation();
@@ -30,7 +30,10 @@ export default function Layout() {
             Back
           </button>
         ) : (
-          <img src={highgateLogo} alt="Highgate" className="top-bar-logo" />
+          <div className="top-bar-brand">
+            <img src={highgateLogo} alt="Highgate" className="top-bar-logo" />
+            <span className="top-bar-title">Cocktail Academy</span>
+          </div>
         )}
       </header>
 

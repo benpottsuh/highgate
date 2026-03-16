@@ -12,6 +12,7 @@ interface DbCocktail {
   tagline: string;
   flavor: string[];
   photo_url: string | null;
+  video_url: string | null;
   overview: string;
   selling_points: string[];
   spec: SpecItem[];
@@ -20,8 +21,10 @@ interface DbCocktail {
   ice: string;
   garnish: string;
   cheat_sheet: string;
+  cheat_sheet_spec: SpecItem[] | null;
   batch: BatchRecipe | null;
   prep: string[];
+  prep_videos: Array<{ title: string; url: string }> | null;
 }
 
 function mapCocktail(row: DbCocktail): Cocktail {
@@ -34,6 +37,7 @@ function mapCocktail(row: DbCocktail): Cocktail {
     tagline: row.tagline,
     flavor: row.flavor,
     photo: row.photo_url,
+    video: row.video_url,
     overview: row.overview,
     selling: row.selling_points,
     spec: row.spec,
@@ -42,8 +46,10 @@ function mapCocktail(row: DbCocktail): Cocktail {
     ice: row.ice,
     garnish: row.garnish,
     cheatSheet: row.cheat_sheet,
+    cheatSheetSpec: row.cheat_sheet_spec,
     batch: row.batch,
     prep: row.prep,
+    prepVideos: row.prep_videos,
   };
 }
 
@@ -58,7 +64,7 @@ export function useCocktails() {
       const { data, error: err } = await supabase
         .from("cocktails")
         .select(
-          "id, slug, name, section_id, spirit, style, tagline, flavor, photo_url, overview, selling_points, spec, technique, glass, ice, garnish, cheat_sheet, batch, prep"
+          "id, slug, name, section_id, spirit, style, tagline, flavor, photo_url, video_url, overview, selling_points, spec, technique, glass, ice, garnish, cheat_sheet, cheat_sheet_spec, batch, prep, prep_videos"
         )
         .order("name");
 

@@ -8,6 +8,7 @@ interface DbTechnique {
   description: string;
   detail: string;
   points: string[];
+  video_url: string | null;
 }
 
 function mapTechnique(row: DbTechnique): Technique {
@@ -17,6 +18,7 @@ function mapTechnique(row: DbTechnique): Technique {
     desc: row.description,
     detail: row.detail,
     points: row.points,
+    video: row.video_url,
   };
 }
 
@@ -30,7 +32,7 @@ export function useTechniques() {
       setLoading(true);
       const { data, error: err } = await supabase
         .from("techniques")
-        .select("id, name, description, detail, points")
+        .select("id, name, description, detail, points, video_url")
         .order("name");
 
       if (err) {

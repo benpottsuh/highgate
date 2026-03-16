@@ -2,10 +2,10 @@ interface IconProps {
   active: boolean;
 }
 
-export function HomeIcon({ active }: IconProps) {
+export function MenusIcon({ active }: IconProps) {
   return (
-    <svg width="22" height="22" viewBox="0 0 24 24" fill={active ? "currentColor" : "none"} stroke="currentColor" strokeWidth="1.8">
-      <path d="M3 10.5L12 3l9 7.5V21a1 1 0 01-1 1H4a1 1 0 01-1-1V10.5z" />
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M2 6h20M2 10h20M2 14h12M2 18h8" fill="none" stroke="currentColor" strokeWidth={active ? 2.2 : 1.8} />
     </svg>
   );
 }

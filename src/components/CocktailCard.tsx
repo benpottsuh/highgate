@@ -22,9 +22,17 @@ export default function CocktailCard({ cocktail, animationDelay = 0 }: Props) {
     >
       <div
         className="cocktail-thumb"
-        style={{ background: sec?.bg || "#333" }}
+        style={{ background: cocktail.photo ? "transparent" : (sec?.bg || "#333") }}
       >
-        <GlassIcon glass={cocktail.glass} size={26} />
+        {cocktail.photo ? (
+          <img
+            src={cocktail.photo}
+            alt={cocktail.name}
+            className="cocktail-thumb-img"
+          />
+        ) : (
+          <GlassIcon glass={cocktail.glass} size={26} />
+        )}
       </div>
       <div className="cocktail-card-info">
         <div className="cocktail-card-section" style={{ color: sec?.accent }}>

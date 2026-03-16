@@ -1,6 +1,5 @@
 import { useParams, Link } from "react-router-dom";
 import { useTechniques } from "../hooks/useTechniques";
-import { PlayIcon } from "../components/icons/UIIcons";
 
 export default function TechniqueDetail() {
   const { id } = useParams<{ id: string }>();
@@ -32,12 +31,30 @@ export default function TechniqueDetail() {
         </ul>
       </div>
 
-      <div className="detail-block fade-in fade-in-2">
-        <div className="video-placeholder" style={{ height: 100 }}>
-          <PlayIcon />
-          <span>Watch technique video</span>
+      {technique.video && (
+        <div className="detail-block fade-in fade-in-2">
+          <h2>Technique Videos</h2>
+          {technique.video.includes('vimeo.com') ? (
+            <div className="detail-video-wrapper">
+              <iframe
+                src={technique.video}
+                className="detail-video-iframe"
+                allow="autoplay; fullscreen; picture-in-picture"
+                allowFullScreen
+                title={technique.name}
+              />
+            </div>
+          ) : (
+            <video
+              src={technique.video}
+              controls
+              playsInline
+              preload="metadata"
+              className="detail-video"
+            />
+          )}
         </div>
-      </div>
+      )}
 
       <div className="footer-actions">
         <Link to="/techniques" className="btn-secondary">

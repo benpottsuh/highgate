@@ -10,6 +10,9 @@ export const cocktails: Cocktail[] = [
     tagline: "A warm orchard whiskey sour with depth and polish",
     flavor: ["Warm apple", "Honey", "Bright citrus backbone", "Oak-spice finish"],
     photo: null,
+    video: null,
+    cheatSheetSpec: null,
+    prepVideos: null,
     overview:
       "A warm orchard whiskey sour with depth and polish — rich bourbon meets apple brandy with a bright citrus backbone and oak-spice finish.",
     selling: [
@@ -41,6 +44,9 @@ export const cocktails: Cocktail[] = [
     tagline: "Our house margarita — clean, balanced, and unapologetically bold",
     flavor: ["Crisp lime", "Agave sweetness", "Spicy-salty rim", "Bright citrus pop"],
     photo: null,
+    video: null,
+    cheatSheetSpec: null,
+    prepVideos: null,
     overview:
       "Our house margarita — clean, balanced, and unapologetically bold. Crisp lime and agave sweetness with a spicy-salty tajín rim.",
     selling: [
@@ -71,6 +77,9 @@ export const cocktails: Cocktail[] = [
     tagline: "A botanical garden in a glass — fragrant, crisp, effortless",
     flavor: ["Floral elderflower", "Juniper", "Cool cucumber", "Herbaceous mint"],
     photo: null,
+    video: null,
+    cheatSheetSpec: null,
+    prepVideos: null,
     overview:
       "A refined gin highball with elderflower tonic, cool cucumber, and fresh mint — fragrant, crisp, and effortless.",
     selling: [
@@ -101,6 +110,9 @@ export const cocktails: Cocktail[] = [
     tagline: "Three ingredients, zero margin for error — the bartender's handshake",
     flavor: ["Clean rum sweetness", "Tart lime citrus", "Perfectly balanced", "Light body"],
     photo: null,
+    video: null,
+    cheatSheetSpec: null,
+    prepVideos: null,
     overview:
       "Three ingredients, zero margin for error. Clean, bright, and refreshing — pure craft. A test of a bartender's skill.",
     selling: [
@@ -130,6 +142,9 @@ export const cocktails: Cocktail[] = [
     tagline: "The after-dinner pick-me-up that never goes out of style",
     flavor: ["Rich espresso bitterness", "Sweet coffee liqueur", "Velvety crema"],
     photo: null,
+    video: null,
+    cheatSheetSpec: null,
+    prepVideos: null,
     overview:
       "The after-dinner pick-me-up that never goes out of style. Fresh espresso pulled to order — smooth, not overly sweet, with real coffee flavor.",
     selling: [
@@ -160,6 +175,9 @@ export const cocktails: Cocktail[] = [
     tagline: "Tropical, fruity, and built for the sun",
     flavor: ["Bold tropical fruit", "Tangy passion fruit", "Sweet pineapple", "Rum kick"],
     photo: null,
+    video: null,
+    cheatSheetSpec: null,
+    prepVideos: null,
     overview:
       "The ultimate poolside drink — tropical, fruity, and built for the sun. Bold tropical fruit with tangy passion fruit and a rum kick.",
     selling: [
@@ -200,6 +218,9 @@ export const cocktails: Cocktail[] = [
     tagline: "Golden hour in a glass — light, bubbly, and effortless",
     flavor: ["Light and bittersweet", "Blood orange brightness", "Gentle effervescence"],
     photo: null,
+    video: null,
+    cheatSheetSpec: null,
+    prepVideos: null,
     overview:
       "Golden hour in a glass — light, bubbly, and effortless. Bittersweet blood orange with gentle effervescence.",
     selling: [
@@ -231,6 +252,9 @@ export const cocktails: Cocktail[] = [
     tagline: "All the bitter-sweet complexity, none of the alcohol",
     flavor: ["Bittersweet orange", "Herbal complexity", "Dry lingering finish"],
     photo: null,
+    video: null,
+    cheatSheetSpec: null,
+    prepVideos: null,
     overview:
       "All the bitter-sweet complexity, none of the alcohol. Real depth and bitterness — serve it exactly like the real thing, no compromise.",
     selling: [

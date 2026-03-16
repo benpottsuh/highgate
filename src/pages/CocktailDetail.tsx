@@ -3,7 +3,6 @@ import { useCocktails } from "../hooks/useCocktails";
 import { useSections } from "../hooks/useSections";
 import GlassIcon from "../components/icons/GlassIcon";
 import { TechIcon } from "../components/icons/NavIcons";
-import { PlayIcon } from "../components/icons/UIIcons";
 
 export default function CocktailDetail() {
   const { slug } = useParams<{ slug: string }>();
@@ -39,27 +38,86 @@ export default function CocktailDetail() {
       {/* Hero photo */}
       <div
         className="detail-hero-photo fade-in fade-in-1"
-        style={{ background: sec?.bg || "#333" }}
+        style={{ background: cocktail.photo ? "transparent" : (sec?.bg || "#333") }}
       >
-        <GlassIcon glass={cocktail.glass} size={48} />
+        {cocktail.photo ? (
+          <img
+            src={cocktail.photo}
+            alt={cocktail.name}
+            className="detail-hero-img"
+          />
+        ) : (
+          <GlassIcon glass={cocktail.glass} size={48} />
+        )}
       </div>
+
+      {/* Cheat Sheet — first thing under hero */}
+      {cocktail.cheatSheetSpec && cocktail.cheatSheetSpec.length > 0 && (
+        <div className="detail-block fade-in fade-in-1">
+          <div className="cheat-sheet-card">
+            <div className="cheat-sheet-header">
+              <span className="cheat-sheet-label">⚡ Cheat Sheet</span>
+              <span className="cheat-sheet-meta">
+                {cocktail.technique} · {cocktail.glass} · {cocktail.ice}
+              </span>
+            </div>
+            <div className="cheat-sheet-spec">
+              {cocktail.cheatSheetSpec.map((s, i) => (
+                <div className="cheat-row" key={i}>
+                  <span className="cheat-amount">{s.amount}</span>
+                  <span className="cheat-ingredient">{s.ingredient}</span>
+                </div>
+              ))}
+            </div>
+            <div className="cheat-sheet-garnish">🌿 {cocktail.garnish}</div>
+          </div>
+        </div>
+      )}
 
       {/* Block 1: Overview */}
       <div className="detail-block fade-in fade-in-2">
         <h2>Overview</h2>
         <p>{cocktail.overview}</p>
+
         <h3>Flavor Profile</h3>
-        <ul className="gold-list">
+        <div className="flavor-chips">
           {cocktail.flavor.map((f) => (
-            <li key={f}>{f}</li>
+            <span key={f} className="flavor-chip">{f}</span>
           ))}
-        </ul>
+        </div>
+
         <h3>Selling Guide</h3>
         <ul className="gold-list">
           {cocktail.selling.map((s, i) => (
             <li key={i}>{s}</li>
           ))}
         </ul>
+
+        {/* Execution video */}
+        {cocktail.video && (
+          <>
+            <h3>Execution Video</h3>
+            {cocktail.video.includes('vimeo.com') ? (
+              <div className="detail-video-wrapper">
+                <iframe
+                  src={cocktail.video}
+                  className="detail-video-iframe"
+                  allow="autoplay; fullscreen; picture-in-picture"
+                  allowFullScreen
+                  title="Execution Video"
+                />
+              </div>
+            ) : (
+              <video
+                src={cocktail.video}
+                controls
+                playsInline
+                preload="metadata"
+                className="detail-video"
+              />
+            )}
+          </>
+        )}
       </div>
 
       {/* Block 2: Spec */}
@@ -85,7 +143,6 @@ export default function CocktailDetail() {
             <span>Garnish: {cocktail.garnish}</span>
           </div>
         </div>
-        <div className="cheat-sheet">{cocktail.cheatSheet}</div>
       </div>
 
       {/* Block 3: Batch & Prep */}
@@ -99,6 +156,9 @@ export default function CocktailDetail() {
                 <li key={i}>{b}</li>
               ))}
             </ul>
+            {cocktail.batch.note && (
+              <p className="batch-note">{cocktail.batch.note}</p>
+            )}
           </>
         ) : (
           <p style={{ color: "var(--text-muted)", fontSize: 13 }}>
@@ -116,19 +176,37 @@ export default function CocktailDetail() {
             <span className="prep-link">See full prep method in Prep Library →</span>
           </>
         )}
-      </div>
 
-      {/* Block 4: Videos */}
-      <div className="detail-block fade-in fade-in-5">
-        <h2>Videos</h2>
-        <div className="video-placeholder">
-          <PlayIcon />
-          <span>Prep video · 2 min</span>
-        </div>
-        <div className="video-placeholder">
-          <PlayIcon />
-          <span>Execution video · 1 min</span>
-        </div>
+        {/* Prep Videos */}
+        {cocktail.prepVideos && cocktail.prepVideos.length > 0 && (
+          <>
+            <h3>Prep Videos</h3>
+            {cocktail.prepVideos.map((v, i) => (
+              <div key={i} className="prep-video-item">
+                {v.title && <p className="prep-video-title">{v.title}</p>}
+                {v.url.includes('vimeo.com') ? (
+                  <div className="detail-video-wrapper">
+                    <iframe
+                      src={v.url}
+                      className="detail-video-iframe"
+                      allow="autoplay; fullscreen; picture-in-picture"
+                      allowFullScreen
+                      title={v.title}
+                    />
+                  </div>
+                ) : (
+                  <video
+                    src={v.url}
+                    controls
+                    playsInline
+                    preload="metadata"
+                    className="detail-video"
+                  />
+                )}
+              </div>
+            ))}
+          </>
+        )}
       </div>
 
       {/* Footer */}

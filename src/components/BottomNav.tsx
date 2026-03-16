@@ -1,8 +1,8 @@
 import { NavLink } from "react-router-dom";
-import { HomeIcon, CocktailIcon, TechIcon, HeartIcon } from "./icons/NavIcons";
+import { MenusIcon, CocktailIcon, TechIcon, HeartIcon } from "./icons/NavIcons";
 
 const navItems = [
-  { to: "/", label: "Home", Icon: HomeIcon },
+  { to: "/", label: "Menus", Icon: MenusIcon },
   { to: "/cocktails", label: "Cocktails", Icon: CocktailIcon },
   { to: "/techniques", label: "Techniques", Icon: TechIcon },
   { to: "/favorites", label: "Favorites", Icon: HeartIcon },
