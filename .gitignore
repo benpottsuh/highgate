@@ -30,4 +30,5 @@ Thumbs.db
 
 # Project-specific
 canva-tokens.json
+google-credentials.json
 .vercel
