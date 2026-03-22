@@ -32,3 +32,9 @@ Thumbs.db
 canva-tokens.json
 google-credentials.json
 .vercel
+
+# Large media files
+videos/
+
+# Canva auth state
+.canva-auth-state.json
